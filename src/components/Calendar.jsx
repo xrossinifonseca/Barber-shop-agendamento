@@ -130,7 +130,7 @@ const Calendar = () => {
             {days.map((day) => (
               <span
                 key={day}
-                className={`w-10 flex items-center justify-center h-10 text-base lg:hover:cursor-pointer hover:opacity-30 ${
+                className={`w-10 flex items-center justify-center h-10 text-base lg:hover:cursor-pointer lg:hover:opacity-30 ${
                   day === dateTime.getDate() &&
                   months[dateMonth] === months[dateTime.getMonth()]
                     ? " bg-primary-200"
