@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
       <div className="w-full h-auto bg-color-secondary text-center mt-5 pt-2">
         <h5 className="text-secondary-300 text-[12px] sm:text-[15px]">
-          Copyrigth &copy; 2022 Barber Shop - Todos Os Direitos Reservados
+          Copyright &copy; 2022 Barber Shop - Todos Os Direitos Reservados
         </h5>
       </div>
     </footer>
