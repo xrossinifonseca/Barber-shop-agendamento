@@ -6,6 +6,7 @@ const App = () => {
   return (
     <div className="w-ful min-h-screen h-auto font-roboto   bg-primary-200">
       <Toaster />
+
       <AppRouter />
     </div>
   );

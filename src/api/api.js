@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://api-barber-app.herokuapp.com/",
+  baseURL: "https://api-barber-shop.onrender.com/",
 });
 
 export const createSession = async (email, password) => {
