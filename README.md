@@ -17,7 +17,7 @@ o objetivo e fazer com que o cliente tenha mais liberdade de agendar seus horár
 
 <h1>Desafios </h1>
 <p>Meu maior desafio nesse projeto foi tornar o calendário dinâmico, meu objetivo era tornar os dias funcionais a partir do click do usuário <br/>
-fazendo com que a respota seja filtrada trazendo os horários disponíveis </br>
+fazendo com que a resposta seja filtrada trazendo os horários disponíveis </br>
 <br/>
 <img src="https://user-images.githubusercontent.com/96319481/206315129-5c0309ac-2a8d-484e-942b-863dc945ef91.png"/>
 
