@@ -22,7 +22,7 @@ fazendo com que a resposta seja filtrada trazendo os horários disponíveis </br
 <img src="https://user-images.githubusercontent.com/96319481/206315129-5c0309ac-2a8d-484e-942b-863dc945ef91.png"/>
 
 <h1>Conclusão </h1>
-<p>Esse projeto faz parte dos meus projetos pessoas e foi criado com objetivo de ir para o meu portfólio, estou extremante feliz por conseguir tirar essa ideia do papel, e poder absorver conhecimentos que só alguns desafios nos proporcionam. </p>
+<p>Esse projeto faz parte dos meus projetos pessoais e foi criado com objetivo de ir para o meu portfólio, estou extremante feliz por conseguir tirar essa ideia do papel, e poder absorver conhecimentos que só alguns desafios nos proporcionam. </p>
 
 
 
