@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 // import { Link } from "react-router-dom";
 import { useStateContext } from "../context/StateContext";
 import ButtonText from "./ButtonText";
@@ -8,10 +9,11 @@ import MessageError from "./MessageError";
 const Login = () => {
   const { email, setEmail, password, setPassword, loginAccount, status } =
     useStateContext();
+  const [loading, setLoading] = useState(false);
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    loginAccount(email, password);
+    loginAccount(email, password, setLoading);
   };
   return (
     <div className="p-4 space-y-5 ">
@@ -40,7 +42,12 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="w-full flex flex-col items-center mt-5 space-y-2">
-          <ButtonText type="submit" text="Entrar" />
+          <ButtonText
+            type="submit"
+            text="Entrar"
+            loading={loading}
+            disabled={!password || !email}
+          />
           <h4 className="text-[12px] text-white   sm:cursor-pointer  ">
             esqueceu a senha?
           </h4>

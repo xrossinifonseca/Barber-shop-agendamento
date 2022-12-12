@@ -6,47 +6,36 @@ import { useFormik } from "formik";
 import { useStateContext } from "../context/StateContext";
 import MessageError from "./MessageError";
 import Success from "./Success";
-import { api } from "../api/api";
+import { createUser } from "../api/api";
+import { useState } from "react";
 
 const Register = () => {
   const { status, setStatus } = useStateContext();
-
-  const createAccount = () => {
-    api
-      .post("users", {
-        name: values.name.toLowerCase().trim(),
-        username: values.username,
-        email: values.email.toLowerCase(),
-        password: values.password,
-        avatar: "#",
-        background: "#",
-      })
-      .then((resp) => resp)
-      .catch((err) => console.log(err));
-  };
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = () => {
+    let name = values.name;
+    let email = values.email;
+    let password = values.password;
+    let username = values.username;
     if (!schema) return;
+    setLoading(true);
 
-    createAccount();
-
-    if (createAccount) {
-      setStatus({
-        type: "sucess",
-        message: "Registrou-se com sucesso!",
+    createUser(name, username, email, password)
+      .then((resp) => {
+        setLoading(false);
+        setStatus({
+          type: "success",
+          message: "Registrou-se com sucesso!",
+        });
+      })
+      .catch(() => {
+        setLoading(false);
+        setStatus({
+          type: "error",
+          message: "erro ao cadastrar",
+        });
       });
-      values.name = "";
-      values.email = "";
-      values.password = "";
-      values.confirmPassword = "";
-      values.username = "";
-    } else {
-      setStatus({
-        type: "Error",
-        message: "Erro ao cadastrar usuário.",
-      });
-      values.email = "";
-    }
   };
 
   const { values, errors, touched, handleChange, handleSubmit } = useFormik({
@@ -61,14 +50,22 @@ const Register = () => {
     onSubmit,
   });
 
+  if (status.type === "success") {
+    values.name = "";
+    values.email = "";
+    values.username = "";
+    values.confirmPassword = "";
+    values.password = "";
+  }
+
   return (
-    <div className="  p-2    relative">
+    <div className="p-2 relative">
       <h1 className="text-2xl text-center">
         Criar <span className="text-yellow-500">Conta</span>
       </h1>
 
       {status.type === "error" && <h1>{status.message}</h1>}
-      {status.type === "sucess" && <Success sucess={status.message} />}
+      {status.type === "success" && <Success sucess={status.message} />}
 
       <form
         autoComplete="off"
@@ -134,7 +131,7 @@ const Register = () => {
         )}
 
         <div className="w-full flex flex-col items-center mt-5 space-y-2">
-          <ButtonText type="submit" text="Cadastrar" />
+          <ButtonText type="submit" text="Cadastrar" loading={loading} />
         </div>
       </form>
     </div>

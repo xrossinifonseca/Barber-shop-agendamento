@@ -40,9 +40,24 @@ const StateContext = ({ children }) => {
     }
   }, []);
 
-  const loginAccount = async (email, password) => {
+  const loginAccount = async (email, password, loading) => {
     try {
-      const response = await createSession(email, password);
+      loading(true);
+      let response;
+
+      await createSession(email, password)
+        .then((resp) => {
+          response = resp;
+          loading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          loading(false);
+        });
+
+      if (response) {
+        loading(false);
+      }
 
       const loggerUser = response.data.user;
       const token = response.data.token;
